@@ -1,0 +1,31 @@
+table {
+    color: #369;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:14px;
+    border-collapse: collapse;
+    text-align: left;
+    
+}
+
+th, td {
+    border: 1px solid rgb(13, 178, 228);
+}
+
+button{
+    color: #369;
+    font-weight: bold;
+    
+}
+
+span{
+    color: rgb(211, 24, 24);
+    
+}
+
+H4 {
+    color: #369;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:large;
+    border-collapse: collapse;
+    text-align:left;
+}

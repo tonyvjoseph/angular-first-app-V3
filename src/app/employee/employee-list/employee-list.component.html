@@ -1,0 +1,171 @@
+<span>*ngFor example</span>
+<table>
+  <thead>
+      <tr>
+          <th>Code</th>
+          <th>Name</th>
+          <th>Gender</th>
+      </tr>
+  </thead>
+  <tbody>
+        <tr *ngFor="let employee of employees">
+            <td>{{employee.code}}</td>
+            <td>{{employee.name}}</td>
+            <td>{{employee.gender}}</td>
+        </tr>
+        <tr *ngIf="!employees || employees.length==0">
+            <td colspan="3">No employees to display</td>
+        </tr>
+  </tbody>
+</table>
+<br><br>
+
+<span>*ngFor trackBy: , index,  example</span>
+<table>
+  <thead>
+      <tr>
+          <th>Code</th>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Annual Salary</th>
+          <th>Date of Birth</th>
+          <th>Index</th>
+          <th>IsFirst</th>
+          <th>IsLast</th>
+          <th>IsEven</th>
+          <th>IsOdd</th>
+      </tr>
+  </thead>
+  <tbody>
+        <tr *ngFor="let employee of employees1;trackBy:trackByEmpCode;let i=index;let isFirst=first;let isLast=last;let isEven=even; let isOdd=odd;">
+            <td>{{employee.code}}</td>
+            <td>{{employee.name}}</td>
+            <td>{{employee.gender}}</td>
+            <td>{{employee.annualSalary}}</td>
+            <td>{{employee.dateOfBirth}}</td>
+            <td>{{i}}</td>
+            <td>{{isFirst}}</td>
+            <td>{{isLast}}</td>
+            <td>{{isEven}}</td>
+            <td>{{isOdd}}</td>
+        </tr>
+        <tr *ngIf="!employees1 || employees1.length==0">
+            <td colspan="5">No employees to display</td>
+        </tr>
+  </tbody>
+</table>
+<button (click)='getEmployees1()'>Refresh employees</button>
+<br><br>
+
+
+<span>Pipes and Custom Pipe example (lowercase, uppercase, decimal, date, percent, currency )</span>
+<table>
+  <thead>
+      <tr>
+          <th>Code</th>
+          <th>Name</th>
+          <th>Name - Custom Pipe</th>
+          <th>Gender</th>
+          <th>Annual Salary</th>
+          <th>Date of Birth</th>
+          <th>Date of Birth1</th>
+      </tr>
+  </thead>
+  <tbody>
+        <tr *ngFor="let employee of employees2;trackBy:trackByEmpCode">
+            <td>{{employee.code | uppercase}}</td>
+            <td>{{employee.name}}</td>
+            <td>{{employee.name | EmpTitle:employee.gender}}</td>
+            <td>{{employee.gender}}</td>
+            <td>{{employee.annualSalary | currency:'USD':true:'1.2-3'}}</td>
+            <td>{{employee.dateOfBirth | date:"fullDate" | uppercase}}</td>
+            <td>{{employee.dateOfBirth | date:"dd/MM/y" | uppercase}}</td>
+        </tr>
+        <tr *ngIf="!employees || employees2.length==0">
+            <td colspan="7">No employees to display</td>
+        </tr>
+  </tbody>
+</table>
+<button (click)='getEmployees2()'>Refresh employees</button>
+<br><br><br><br>
+
+<span>Passing Data from Nested component to Container component</span><br>
+<span>Component Input and Output properties</span><br>
+<span>Custom events using EventEmitter class</span><br>
+<span>"ng-container" example</span>
+<br>
+<app-employee-count [all]="getTotalEmployeesCount()"
+                    [male]="getTotalMaleEmployeesCount()"
+                    [female]="getTotalFemaleEmployeesCount()"
+                    (countRadioButtonSelectionChanged)="onEmployeeCountRadioButtonChange($event)"
+></app-employee-count>
+<table>
+  <thead>
+      <tr>
+          <th>Code</th>
+          <th>Name</th>
+          <th>Name - Custom Pipe</th>
+          <th>Gender</th>
+          <th>Annual Salary</th>
+          <th>Date of Birth</th>
+      </tr>
+  </thead>
+  <tbody>
+      <ng-container *ngFor="let employee of employees3" >
+        <tr *ngIf="selectedEmployeeCountRadioButton=='All' || selectedEmployeeCountRadioButton==employee.gender">
+            <td>{{employee.code | uppercase}}</td>
+            <td>{{employee.name}}</td>
+            <td>{{employee.name | EmpTitle:employee.gender}}</td>
+            <td>{{employee.gender}}</td>
+            <td>{{employee.annualSalary | currency:'USD':true:'1.2-3'}}</td>
+            <td>{{employee.dateOfBirth | date:"dd/MM/y" | uppercase}}</td>
+        </tr>
+    </ng-container>
+  </tbody>
+</table>
+
+<br><br>
+<span>Interface example</span><br>
+<span style="color: #369;">employees4: IEmployee[];</span>
+
+<br><br>
+<span>Angular services </span><br>
+<span>Injectable, @Injectable()</span><br>
+<span>providers: [EmployeeService]</span><br>
+<span>constructor(private _emplyoeeService:EmployeeService)</span><br>
+<span>ngOnInit() : ngOnInit will call after constructor. Mainly used for component initialisation and service calls</span><br>
+<span>Web API call from angular. </span><br>
+<span>HttpClientModule, HttpClient, Http Get, Observable, subscribe, </span>
+<br><br>
+<div>
+    <span style="color: #369; font-weight: bold">Total Employees from web api: </span>
+    <span style="font-weight: bold" *ngIf="employees5">{{getEmployeesCountFromWebAPI()}}</span>
+</div>
+ <table>
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Name - Custom Pipe</th>
+            <th>Gender</th>
+            <th>Annual Salary</th>
+            <th>Date of Birth</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of employees5">
+            <td>{{employee.code | uppercase}}</td>
+            <td>{{employee.name}}</td>
+            <td>{{employee.name | EmpTitle:employee.gender}}</td>
+            <td>{{employee.gender}}</td>
+            <td>{{employee.annualSalary | currency:'USD':true:'1.2-3'}}</td>
+            <td>{{employee.dateOfBirth | date:"dd/MM/y" | uppercase}}</td>
+        </tr>
+        <tr *ngIf="!employees5">
+            <td colspan="6">{{errorMessage}}</td>
+        </tr>
+        <tr *ngIf="employees5 && employees5.length==0">
+            <td colspan="6">No employees to display</td>
+        </tr>
+    </tbody>
+</table>

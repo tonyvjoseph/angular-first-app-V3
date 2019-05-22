@@ -1,0 +1,33 @@
+table {
+    color: #369;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:16px;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+td {
+    border: 1px solid rgb(13, 178, 228);
+}
+
+div {
+    text-align: left;
+    color: #369;
+}
+
+div button{
+    color: #369;
+    font-weight: bold;
+    
+}
+
+div span{
+    color: rgb(12, 99, 212);
+    font-weight: bold;
+}
+
+
+span{
+    color: rgb(211, 24, 24);
+    text-align: left;
+}

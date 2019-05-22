@@ -1,0 +1,31 @@
+H1 {
+    color: #369;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:large;
+    border-collapse: collapse;
+}
+
+H3 {
+    color: #369;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:large;
+    border-collapse: collapse;
+    text-align:left;
+}
+
+.boldClass{
+    font-weight:bold;
+}
+
+.italicsClass{
+    font-style:italic;
+}
+
+.colorClass{
+    color:red;
+}
+
+span{
+    color: rgb(211, 24, 24);
+    text-align: left;
+}

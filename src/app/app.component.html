@@ -1,0 +1,92 @@
+<div style="text-align:center">
+    <h1>
+      Welcome to {{ title? title: 'No Titile' }}!
+    </h1>
+    <!-- Below one is Using Interpolation -->
+    <img src='{{titleImagePath}}'/>
+    <!-- Below one is Property binding -->
+    <img [src]='titleImagePath'/>  
+
+    <div style="text-align:left">
+      <button disabled={{isDisabled}}>Click Me | Interpolation binding</button>
+      <button [disabled]='isDisabled'>Click Me | Property binding</button>
+      <button bind-disabled='isDisabled'>Click Me | Property binding, Canonical way</button>
+    </div>
+
+    <h3 style="text-align:left">Employee {{getFullName()}}</h3>
+    
+    <p style="text-align:left; color:red">{{ 10+20+30}}</p>
+
+    <div>
+      <!-- CSS Class binding -->
+      <button [class]="cssClassToApply">CSS Class binding example</button>
+      <br><br>
+      <!-- Adding a css class based on condition-->
+      <button class="italicsClass" [class.colorClass]="isApplyColorClass">CSS Class binding with condition</button>
+      <br><br>
+      <!-- Removing a css class based on condition-->
+      <button class="boldClass italicsClass colorClass" [class.colorClass]="!isApplyColorClass">CSS Class Removing</button>
+      <br><br>
+      <!-- Adding one or more css using [ngClass] class and based on condition-->
+      <button class="italicsClass" [ngClass]='addCssUsingNgClass1()'>CSS Class using ngClass 1</button>
+      <br><br>
+      <button class="italicsClass" [ngClass]='addCssUsingNgClass2()'>CSS Class using ngClass 2</button>
+      <br><br>
+  
+      <!-- Inline Style binding -->
+      <button style="color:blue" [style.font-weight]="isBold? 'bold':'normal'" 
+                                  [style.font-size.px]="fontSize">Inline Style binding</button>
+      <br><br>
+      <!-- Inline Style binding using ngStyle-->
+      <button [ngStyle]="addStyleUsingNgStyle()">Inline Style binding using ngStyle</button>
+      <br><br>
+  </div>
+  
+  <div style="text-align:left;">
+      <!-- Event Binding examples -->
+      <span>Event Binding examples</span>
+      <br><br>
+      <button (click)='onClick()'>Event binding-1 "(click)"</button>
+      <br><br>
+      <button on-click='onClick()'>Event binding-2 "on-click" </button>
+      <br><br>
+  </div>
+
+  </div>
+
+  <app-employee></app-employee>
+  <br><br>
+  <app-employee-list></app-employee-list>
+  <br><br>
+
+  <!-- Angular component lifecycle hooks  -->
+  <div>
+    <p style="text-align:left; color:red; font-weight: bold;"> Angular component lifecycle hooks | ngOnChanges, ngOnInit and ngOnDestroy</p>
+    <div>
+      <span style="color: #369;">Your Text: </span>
+      <input type="text" [(ngModel)]='userText' />
+    </div>
+  </div>
+  <br>
+  <app-others [InputValue]='userText'></app-others>
+  <br><br>
+
+<button class="btn btn-primary">
+    Bootstrap Styled Button
+</button>
+<br><br><br>
+<!-- Routing -->
+<span>Routing Example...</span>
+<div class="container">
+  <nav class="navbar navbar-default">
+      <ul class="nav navbar-nav">
+          <li>
+              <a routerLinkActive="active" routerLink="home">Home</a>
+          </li>
+          <li>
+              <a routerLinkActive="active" routerLink="employees">Employees</a>
+          </li>
+      </ul>
+  </nav>
+  <router-outlet></router-outlet>
+</div>
